@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <ul>
+        <li>Html</li>
+        <li>Css</li>
+        <li>Sql</li>
+        <li>Jquery</li>
+        <li>PHP</li>
+        <li>Angular</li>
+    </ul>
+
+    <div id="test">Lorem ipsum dolor sit amet.</div>
+
+    <div class="result"></div>
+
+
+
+    <select id="image">
+        <option value="1.png">First</option>
+        <option value="2.png">Second</option>
+        <option value="3.png">Thirs</option>
+
+    </select>
+
+    <img src="img/1.png" id="view" class="" style="" />
+
+
+
+    <input type="text" id="name" autocomplete="off" />
+    <button id="btn">Get result</button>
+    <div id="result"></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+        crossorigin="anonymous"></script>
+
+    <script src="js/jquery.js" async defer></script>
+    <script>
+        $(document).ready(function () {
+            /*
+              $("li").each(function (index, element) {
+                  if($(element).text() == 'PHP') {
+                      return false;
+                  }
+
+                  alert(index + ':' + $(element).text());
+              })
+              */
+
+            /*
+            $("#test").css("color", "red").slideUp(1000).slideDown(1000);
+              */
+
+            /*
+          var jsonText = [{
+                name: "rochdi",
+                age: "32",
+                nationalität: "Ma"
+            }, {
+                name: "ouakif",
+                age: "35",
+                nationalität: "De" 
+            }];
+
+
+         var jsonText2 = [{
+                name: "rochdi2",
+                age: "32",
+                nationalität: "Ma"
+            }, {
+                name: "ouakif2",
+                age: "35",
+                nationalität: "De" 
+            }];
+
+      $.each(jsonText, function(index,item){
+          alert(item.name);
+     
+        });
+
+        var result = JSON.stringify(jsonText2);
+           
+        $(".result").html(result);
+        var jsonString = '[{"name":"yassin","age":"32","nationalität":"Ma"},{"name":"yasmin","age":"35","nationalität":"De"}]';
+
+        var result2 = JSON.parse(jsonString);
+
+        $.each(result2, function(index,item){
+          alert(item.name);
+     
+        });
+
+        */
+
+            $("#image").on('change', function () {
+                var imageSrc = $(this).val();
+                $("#view").attr('src', "img/" + imageSrc);
+            });
+
+
+
+            /* jquery ajax */
+
+            $("#btn").click(function() {
+                var inputName = $("#name").val();
+                $.ajax({
+                    "url": "ajax.php",
+                    "method": "get",
+                    "data": {
+                        name:inputName,
+                    },
+                    //"type":"xml",
+                    success: function (response) {
+                       
+                        $("#result").html(response);
+                    }
+                });
+
+            });
+
+
+
+        });
+    </script>
+</body>
+
+</html>
